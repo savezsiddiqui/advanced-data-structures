@@ -63,13 +63,13 @@ class IntervalTree
     {
         if (root == NULL)
             return -1;
-       root->max1 = max(root->high, max(updatemax1(root->left), updatemax1(root->right)));
-        return root->max1;
+        root->max = max(root->high, max(UpdateMax(root->left), UpdateMax(root->right)));
+        return root->max;
     }
 
     Node *deleteNode(Node *root, int low)
     {
-        if(root == NULL)
+        if (root == NULL)
             return NULL;
 
         else if (low > root->low)
