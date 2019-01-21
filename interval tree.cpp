@@ -62,19 +62,9 @@ class IntervalTree
     int UpdateMax(Node *root)
     {
         if (root == NULL)
-            return INT_MIN;
-
-        int left = UpdateMax(root->left);
-        int right = UpdateMax(root->right);
-
-        root->max = root->high;
-
-        if (left > root->high && left > right)
-            root->max = left;
-        if (right > root->high && right > left)
-            root->max = right;
-
-        return root->max;
+            return -1;
+       root->max1 = max(root->high, max(updatemax1(root->left), updatemax1(root->right)));
+        return root->max1;
     }
 
     Node *deleteNode(Node *root, int low)
